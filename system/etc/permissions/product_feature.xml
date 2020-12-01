@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<permissions>
+    <feature name="com.motorola.software.device.merlin" />
+    <feature name="com.motorola.software.product.merlin_retasia" />
+    <feature name="com.motorola.hardware.tier.G" />
+    <feature name="com.motorola.hardware.wave.2015.2" />
+</permissions>
