@@ -1,0 +1,19 @@
+import init.mmi.dtv.rc
+
+on boot
+    # set permission for Dynamic-CABC feature
+    chown system system /sys/class/graphics/fb0/cabc_mode
+    # set permission for HBM feature
+    chown system system /sys/class/graphics/fb0/hbm
+    # set permissions for Factory Kill Disable
+    chown root mot_tcmd /sys/module/smb135x_charger_mmi/parameters/factory_kill_disable
+    chmod 0660 /sys/module/smb135x_charger_mmi/parameters/factory_kill_disable
+
+on early-init
+    # Mount point for Digital Personalization partition
+    mkdir /customize 0500 root root
+
+on fs
+    #Mount customize partion
+    wait /dev/block/platform/msm_sdcc.1/by-name/customize
+    mount ext4 /dev/block/platform/msm_sdcc.1/by-name/customize /customize ro discard nosuid nodev noatime nodiratime noexec defcontext=u:object_r:user_config_file:s0
